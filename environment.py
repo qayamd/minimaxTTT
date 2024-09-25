@@ -3,6 +3,7 @@ import sys
 from node import TicTacToeNode
 from typing import List, Optional, Tuple
 from search import minimax, get_best_move
+from cache import TicTacToeCacheOptimizer, get_best_move_cached
 
 class TicTacToeGame:
     def __init__(self):
@@ -11,6 +12,8 @@ class TicTacToeGame:
         pygame.display.set_caption('Tic-Tac-Toe')
         self.font: pygame.font.Font = pygame.font.Font(None, 74)
         self.small_font: pygame.font.Font = pygame.font.Font(None, 36)
+        self.cache_optimizer = TicTacToeCacheOptimizer()
+        self.cache_optimizer.optimize()
         self.reset_game()
 
     def reset_game(self) -> None:
@@ -48,8 +51,7 @@ class TicTacToeGame:
             self.check_game_over()
             
         if not self.game_over:
-            ai_move = get_best_move(self.current_node)
-            self.current_node = ai_move
+            self.current_node = get_best_move_cached(self.current_node, self.cache_optimizer)
             self.check_game_over()
 
     def check_game_over(self) -> None:
