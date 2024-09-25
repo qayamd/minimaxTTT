@@ -47,6 +47,3 @@ The efficiency of this AI becomes more apparent in the following scenarios:
 * `node.py`: Defines the `TicTacToeNode` class, representing game states and providing methods for game logic.
 * `search.py`: Contains the Minimax algorithm implementation with alpha-beta pruning and the heuristic function.
 
-To use this AI in your project, import the necessary functions from `search.py`. To play against the AI, run `python environment.py` from the command line.
-
-The AI provides a challenging opponent for Tic Tac Toe players while demonstrating the power of classical game theory algorithms in practice.
