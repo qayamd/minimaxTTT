@@ -64,12 +64,7 @@ def get_best_move_cached(node: TicTacToeNode, cache_optimizer: TicTacToeCacheOpt
         _, best_move_index = cached_value
         return node.get_children()[best_move_index]
     else:
-        # Fallback to original minimax if state is not in cache (shouldn't happen if cache is complete)
         return get_best_move(node)
 
-# Usage
 cache_optimizer = TicTacToeCacheOptimizer()
-cache_optimizer.optimize()  # Generate and cache all states (run this once)
-
-# In the game loop, replace the call to get_best_move with:
-# ai_move = get_best_move_cached(self.current_node, cache_optimizer)
+cache_optimizer.optimize()  
